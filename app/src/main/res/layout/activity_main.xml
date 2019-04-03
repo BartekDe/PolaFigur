@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="visible"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/resultTextView"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/suma_p_l_0" />
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="clickResetButton"
+            android:text="@string/resetuj" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/infoTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/dodaj_kolejne_pole" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/triangleButton"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="clickTriangleButton"
+            android:text="@string/tr_jk_t" />
+
+        <Button
+            android:id="@+id/rectangleButton"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="clickRectangleButton"
+            android:text="@string/prostok_t" />
+
+        <Button
+            android:id="@+id/circleButton"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="111dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="clickCircleButton"
+            android:text="@string/ko_o" />
+    </LinearLayout>
+
+</LinearLayout>

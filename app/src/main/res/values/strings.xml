@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Obliczanie pól</string>
+    <string name="resetuj">RESETUJ</string>
+    <string name="tr_jk_t">TRÓJKĄT</string>
+    <string name="prostok_t">PROSTOKĄT</string>
+    <string name="ko_o">KOŁO</string>
+    <string name="suma_p_l_0">Suma pól = 0</string>
+    <string name="dodaj_kolejne_pole">Dodaj kolejne pole</string>
+    <string name="triangle_image">triangle image</string>
+    <string name="oblicz">Oblicz</string>
+    <string name="area_of_triangle">Area of triangle=</string>
+    <string name="rezygnacja">Rezygnacja</string>
+    <string name="dodaj">Dodaj</string>
+    <string name="area_of_rectangle">Area of rectangle=</string>
+    <string name="area_of_circle">Area of circle=</string>
+    <string name="a">a=</string>
+    <string name="b">b=</string>
+    <string name="c">c=</string>
+    <string name="obliczanie_pola_tr_jk_ta_n_wpisz_d_ugo_ci_bok_w_tr_jk_ta">Obliczanie pola trójkąta  Wpisz długości boków trójkąta...</string>
+    <string name="lub_wpisz_dwa_z_trzech_k_t_w_aby_policzy_miar_trzeciego">...lub wpisz dwa z trzech kątów (w stopniach), aby policzyć miarę trzeciego...</string>
+    <string name="gamma">γ=</string>
+    <string name="beta">β=</string>
+    <string name="alfa">α=</string>
+</resources>
