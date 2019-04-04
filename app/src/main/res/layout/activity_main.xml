@@ -17,6 +17,12 @@
         android:visibility="visible">
 
         <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/suma_p_l" />
+
+        <TextView
             android:id="@+id/resultTextView"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -29,6 +35,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:onClick="clickResetButton"
+            app:backgroundTint="@color/c"
             android:text="@string/resetuj" />
     </LinearLayout>
 
@@ -51,27 +58,30 @@
             style="@style/Widget.AppCompat.Button"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
+            app:backgroundTint="@color/c"
             android:gravity="center"
             android:onClick="clickTriangleButton"
-            android:text="@string/tr_jk_t" />
+            android:text="@string/tr_jk_t"/>
 
         <Button
             android:id="@+id/rectangleButton"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="174dp"
             android:layout_height="wrap_content"
+            app:backgroundTint="@color/c"
             android:gravity="center"
             android:onClick="clickRectangleButton"
-            android:text="@string/prostok_t" />
+            android:text="@string/prostok_t"/>
 
         <Button
             android:id="@+id/circleButton"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="111dp"
             android:layout_height="wrap_content"
+            app:backgroundTint="@color/c"
             android:gravity="center"
             android:onClick="clickCircleButton"
-            android:text="@string/ko_o" />
+            android:text="@string/ko_o"/>
     </LinearLayout>
 
 </LinearLayout>

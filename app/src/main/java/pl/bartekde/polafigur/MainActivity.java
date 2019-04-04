@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     public final static int CODE_TRIANGLE   = 10;
@@ -66,22 +68,19 @@ public class MainActivity extends AppCompatActivity {
             String newArea = "";
             switch (requestCode) {
                 case CODE_TRIANGLE:
-                    if (CalculateTriangleActivity.TRIANGLE_RESULT != null)
-                        newArea = data.getStringExtra(CalculateTriangleActivity.TRIANGLE_RESULT);
+                    newArea = data.getStringExtra(CalculateTriangleActivity.TRIANGLE_RESULT);
                     break;
                 case CODE_RECTANGLE:
-                    if (CalculateRectangleActivity.RECTANGLE_RESULT != null)
-                        newArea = data.getStringExtra(CalculateRectangleActivity.RECTANGLE_RESULT);
+                    newArea = data.getStringExtra(CalculateRectangleActivity.RECTANGLE_RESULT);
                     break;
                 case CODE_CIRCLE:
-                    if (CalculateCircleActivity.CIRCLE_RESULT != null)
-                        newArea = data.getStringExtra(CalculateCircleActivity.CIRCLE_RESULT);
+                    newArea = data.getStringExtra(CalculateCircleActivity.CIRCLE_RESULT);
                     break;
             }
 
             area += Double.parseDouble(newArea);
         }
 
-        ((TextView) findViewById(R.id.resultTextView)).setText(Double.toString(area));
+        ((TextView) findViewById(R.id.resultTextView)).setText(String.format(Locale.getDefault(), "%.2f", area));
     }
 }

@@ -57,7 +57,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="number"
+                android:numeric="decimal" />
 
             <TextView
                 android:id="@+id/b"
@@ -73,7 +74,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="number"
+                android:numeric="decimal" />
 
             <TextView
                 android:id="@+id/c"
@@ -89,13 +91,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="number"
+                android:numeric="decimal" />
 
             <Button
                 android:id="@+id/triangleCalcButton"
                 android:layout_width="136dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                app:backgroundTint="@color/c"
                 android:text="@string/oblicz" />
 
         </LinearLayout>
@@ -175,6 +179,7 @@
                 android:layout_width="136dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                app:backgroundTint="@color/c"
                 android:text="@string/oblicz" />
 
         </LinearLayout>
@@ -201,6 +206,7 @@
             android:layout_width="134dp"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            app:backgroundTint="@color/c"
             android:text="@string/dodaj" />
 
         <Button
@@ -208,6 +214,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            app:backgroundTint="@color/c"
             android:text="@string/rezygnacja" />
     </LinearLayout>
 

@@ -119,8 +119,6 @@ public class CalculateTriangleActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         String areaString = ((TextView)findViewById(R.id.triangleResultTextView)).getText().toString();
 
-                        /* TODO: stop crashing when areaString is null, and the null is passed back into MainActivity */
-
                         Intent backIntent = new Intent();
 
                         backIntent.putExtra(TRIANGLE_RESULT, areaString);
