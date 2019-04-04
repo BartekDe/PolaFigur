@@ -6,7 +6,6 @@
         <item name="colorPrimary">@color/c</item>
         <item name="colorPrimaryDark">@color/c</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:fontFamily">Sans</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

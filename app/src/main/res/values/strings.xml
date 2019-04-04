@@ -8,11 +8,11 @@
     <string name="dodaj_kolejne_pole">Dodaj kolejne pole</string>
     <string name="triangle_image">triangle image</string>
     <string name="oblicz">Oblicz</string>
-    <string name="area_of_triangle">Area of triangle=</string>
+    <string name="area_of_triangle">Pole trójkąta=</string>
     <string name="rezygnacja">Rezygnacja</string>
     <string name="dodaj">Dodaj</string>
-    <string name="area_of_rectangle">Area of rectangle=</string>
-    <string name="area_of_circle">Area of circle=</string>
+    <string name="area_of_rectangle">Pole prostokąta=</string>
+    <string name="area_of_circle">Pole koła=</string>
     <string name="a">a=</string>
     <string name="b">b=</string>
     <string name="c">c=</string>
@@ -22,4 +22,7 @@
     <string name="beta">β=</string>
     <string name="alfa">α=</string>
     <string name="suma_p_l">Suma pól:</string>
+    <string name="r">r=</string>
+    <string name="ar">a=</string>
+    <string name="br">b=</string>
 </resources>

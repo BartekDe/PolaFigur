@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="r=" />
+            android:text="@string/r" />
 
         <EditText
             android:id="@+id/rEditText"
@@ -41,10 +41,11 @@
 
         <Button
             android:id="@+id/circleCalcButton"
-            android:layout_width="136dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/oblicz" />
+            android:text="@string/oblicz"
+            app:backgroundTint="@color/c" />
 
     </LinearLayout>
 
@@ -57,25 +58,26 @@
 
         <TextView
             android:id="@+id/circleResultTextView"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/area_of_circle"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <Button
             android:id="@+id/backAndAddButton"
-            android:layout_width="134dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/dodaj" />
+            android:text="@string/dodaj"
+            app:backgroundTint="@color/c" />
 
         <Button
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="clickBackButton"
-            android:text="@string/rezygnacja" />
+            android:text="@string/rezygnacja"
+            app:backgroundTint="@color/c" />
     </LinearLayout>
 
 </LinearLayout>

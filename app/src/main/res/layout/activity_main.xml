@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
@@ -35,8 +35,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:onClick="clickResetButton"
-            app:backgroundTint="@color/c"
-            android:text="@string/resetuj" />
+            android:text="@string/resetuj"
+            app:backgroundTint="@color/c" />
     </LinearLayout>
 
     <TextView
@@ -56,32 +56,32 @@
         <Button
             android:id="@+id/triangleButton"
             style="@style/Widget.AppCompat.Button"
-            android:layout_width="125dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:backgroundTint="@color/c"
             android:gravity="center"
             android:onClick="clickTriangleButton"
-            android:text="@string/tr_jk_t"/>
+            android:text="@string/tr_jk_t"
+            app:backgroundTint="@color/c" />
 
         <Button
             android:id="@+id/rectangleButton"
             style="@style/Widget.AppCompat.Button"
-            android:layout_width="174dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:backgroundTint="@color/c"
             android:gravity="center"
             android:onClick="clickRectangleButton"
-            android:text="@string/prostok_t"/>
+            android:text="@string/prostok_t"
+            app:backgroundTint="@color/c" />
 
         <Button
             android:id="@+id/circleButton"
             style="@style/Widget.AppCompat.Button"
-            android:layout_width="111dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:backgroundTint="@color/c"
             android:gravity="center"
             android:onClick="clickCircleButton"
-            android:text="@string/ko_o"/>
+            android:text="@string/ko_o"
+            app:backgroundTint="@color/c" />
     </LinearLayout>
 
 </LinearLayout>

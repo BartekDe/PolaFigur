@@ -96,11 +96,11 @@
 
             <Button
                 android:id="@+id/triangleCalcButton"
-                android:layout_width="136dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:backgroundTint="@color/c"
-                android:text="@string/oblicz" />
+                android:text="@string/oblicz"
+                app:backgroundTint="@color/c" />
 
         </LinearLayout>
     </LinearLayout>
@@ -130,7 +130,7 @@
 
             <TextView
                 android:id="@+id/alfa"
-                android:layout_width="25dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
@@ -146,7 +146,7 @@
 
             <TextView
                 android:id="@+id/beta"
-                android:layout_width="25dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
@@ -162,7 +162,7 @@
 
             <TextView
                 android:id="@+id/gamma"
-                android:layout_width="25dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
@@ -176,11 +176,11 @@
 
             <Button
                 android:id="@+id/triangleAnglesCalcButton"
-                android:layout_width="136dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:backgroundTint="@color/c"
-                android:text="@string/oblicz" />
+                android:text="@string/oblicz"
+                app:backgroundTint="@color/c" />
 
         </LinearLayout>
     </LinearLayout>
@@ -203,11 +203,11 @@
 
         <Button
             android:id="@+id/backAndAddButton"
-            android:layout_width="134dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            app:backgroundTint="@color/c"
-            android:text="@string/dodaj" />
+            android:text="@string/dodaj"
+            app:backgroundTint="@color/c" />
 
         <Button
             android:id="@+id/backButton"
