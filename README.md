@@ -1,3 +1,3 @@
 # PolaFigur
 
-Android application calculates areas of a few geometrical figures
+Android application that calculates areas of a few geometrical figures
