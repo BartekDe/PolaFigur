@@ -3,6 +3,7 @@ package pl.bartekde.polafigur;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +36,8 @@ class Rectangle {
 
 public class CalculateRectangleActivity extends AppCompatActivity {
 
+    private boolean hasCalculated = false;
+
     public static final String RECTANGLE_RESULT = "Area of rectangle= ";
 
     @Override
@@ -49,16 +52,26 @@ public class CalculateRectangleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                // get the lengths of the rectangle here
-                double a = Double.parseDouble(((EditText)findViewById(R.id.aEditText)).getText().toString());
-                double b = Double.parseDouble(((EditText)findViewById(R.id.bEditText)).getText().toString());
+                EditText aEditText = findViewById(R.id.aEditText);
+                EditText bEditText = findViewById(R.id.bEditText);
 
-                Rectangle r = new Rectangle(a, b);
-                double rectangleArea = r.area(); // calculate beforehand to avoid double calculation if the rectangle is valid
-                if(rectangleArea != 0.0) {
-                    rectangleResultTextView.setText(Double.toString(rectangleArea));
-                } else rectangleResultTextView.setText("Invalid rectangle");
+                if(TextUtils.isEmpty(aEditText.getText()) ||
+                        TextUtils.isEmpty(bEditText.getText())) {
+                    rectangleResultTextView.setText("Rectangle needs 2 sides!");
+                } else {
 
+                    // get the lengths of the rectangle here
+                    double a = Double.parseDouble(aEditText.getText().toString());
+                    double b = Double.parseDouble(bEditText.getText().toString());
+
+                    Rectangle r = new Rectangle(a, b);
+                    double rectangleArea = r.area(); // calculate beforehand to avoid double calculation if the rectangle is valid
+                    if (rectangleArea != 0.0) {
+                        rectangleResultTextView.setText(Double.toString(rectangleArea));
+                    } else rectangleResultTextView.setText("Invalid rectangle");
+
+                    hasCalculated = true;
+                }
             }
         };
 
@@ -70,15 +83,17 @@ public class CalculateRectangleActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String areaString = ((TextView)findViewById(R.id.rectangleResultTextView)).getText().toString();
+                        if(hasCalculated) {
+                            String areaString = ((TextView) findViewById(R.id.rectangleResultTextView)).getText().toString();
 
-                        Intent backIntent = new Intent();
+                            Intent backIntent = new Intent();
 
-                        backIntent.putExtra(RECTANGLE_RESULT, areaString);
+                            backIntent.putExtra(RECTANGLE_RESULT, areaString);
 
-                        setResult(RESULT_OK, backIntent);
+                            setResult(RESULT_OK, backIntent);
 
-                        finish();
+                            finish();
+                        } else rectangleResultTextView.setText("Calculate your area first!");
                     }
                 }
         );

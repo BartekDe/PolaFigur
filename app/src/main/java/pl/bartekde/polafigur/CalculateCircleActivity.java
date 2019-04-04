@@ -3,6 +3,7 @@ package pl.bartekde.polafigur;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,8 @@ class Circle {
 
 public class CalculateCircleActivity extends AppCompatActivity {
 
+    private boolean hasCalculated = false;
+
     public static final String CIRCLE_RESULT = "Area of circle= ";
 
     private Button circleCalcButton;
@@ -46,14 +49,21 @@ public class CalculateCircleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                // get the lengths of the triangle here
-                double r = Double.parseDouble(((EditText)findViewById(R.id.rEditText)).getText().toString());
+                EditText rEditText = findViewById(R.id.rEditText);
 
-                Circle circle = new Circle(r);
-                double circleArea = circle.area(); // calculate beforehand to avoid double calculation if the triangle is valid
-                if(circleArea != 0.0) {
-                    circleResultTextView.setText(Double.toString(circleArea));
-                } else circleResultTextView.setText("Invalid circle");
+                if(TextUtils.isEmpty(rEditText.getText().toString())) {
+                    circleResultTextView.setText("You need a radius!");
+                } else {
+                    // get the lengths of the triangle here
+                    double r = Double.parseDouble(rEditText.getText().toString());
+
+                    Circle circle = new Circle(r);
+                    double circleArea = circle.area(); // calculate beforehand to avoid double calculation if the triangle is valid
+                    if (circleArea != 0.0) {
+                        circleResultTextView.setText(Double.toString(circleArea));
+                    } else circleResultTextView.setText("Invalid circle");
+                    hasCalculated = true;
+                }
 
             }
         };
@@ -66,15 +76,17 @@ public class CalculateCircleActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String areaString = ((TextView)findViewById(R.id.circleResultTextView)).getText().toString();
+                        if(hasCalculated) {
+                            String areaString = ((TextView) findViewById(R.id.circleResultTextView)).getText().toString();
 
-                        Intent backIntent = new Intent();
+                            Intent backIntent = new Intent();
 
-                        backIntent.putExtra(CIRCLE_RESULT, areaString);
+                            backIntent.putExtra(CIRCLE_RESULT, areaString);
 
-                        setResult(RESULT_OK, backIntent);
+                            setResult(RESULT_OK, backIntent);
 
-                        finish();
+                            finish();
+                        } else circleResultTextView.setText("Calculate the area first!");
                     }
                 }
         );

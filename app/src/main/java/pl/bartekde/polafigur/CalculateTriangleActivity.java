@@ -3,6 +3,7 @@ package pl.bartekde.polafigur;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,9 +57,11 @@ class Triangle {
 
 public class CalculateTriangleActivity extends AppCompatActivity {
 
-    Button triangleCalcButton;
+    private Button triangleCalcButton;
 
-    TextView triangleResultTextView;
+    private TextView triangleResultTextView;
+
+    private boolean hasCalculated = false;
 
     public final static String TRIANGLE_RESULT = "Area of triangle= ";
 
@@ -74,16 +77,29 @@ public class CalculateTriangleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                // get the lengths of the triangle here
-                double a = Double.parseDouble(((EditText)findViewById(R.id.aEditText)).getText().toString());
-                double b = Double.parseDouble(((EditText)findViewById(R.id.bEditText)).getText().toString());
-                double c = Double.parseDouble(((EditText)findViewById(R.id.cEditText)).getText().toString());
+                EditText aEditText = findViewById(R.id.aEditText);
+                EditText bEditText = findViewById(R.id.bEditText);
+                EditText cEditText = findViewById(R.id.cEditText);
 
-                Triangle t = new Triangle(a, b, c);
-                double triangleArea = t.area(); // calculate beforehand to avoid double calculation if the triangle is valid
-                if(triangleArea != 0.0) {
-                    triangleResultTextView.setText(Double.toString(triangleArea));
-                } else triangleResultTextView.setText("Invalid triangle!");
+                // If any of the fields are left empty - don't calculate anything, just set area to zero
+                if(TextUtils.isEmpty(aEditText.getText()) ||
+                        TextUtils.isEmpty(bEditText.getText()) ||
+                        TextUtils.isEmpty(cEditText.getText())) {
+                    triangleResultTextView.setText("Triangle needs 3 sides!");
+                } else {
+
+                    // get the lengths of the triangle here
+                    double a = Double.parseDouble(aEditText.getText().toString());
+                    double b = Double.parseDouble(bEditText.getText().toString());
+                    double c = Double.parseDouble(cEditText.getText().toString());
+
+                    Triangle t = new Triangle(a, b, c);
+                    double triangleArea = t.area(); // calculate beforehand to avoid double calculation if the triangle is valid
+                    if (triangleArea != 0.0) {
+                        triangleResultTextView.setText(Double.toString(triangleArea));
+                    } else triangleResultTextView.setText("Invalid triangle!");
+                    hasCalculated = true;
+                }
 
             }
         };
@@ -97,15 +113,29 @@ public class CalculateTriangleActivity extends AppCompatActivity {
                         new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                // get two of three triangle angles
-                                double alpha = Double.parseDouble(((EditText)findViewById(R.id.alfaEditText)).getText().toString());
-                                double beta = Double.parseDouble(((EditText)findViewById(R.id.betaEditText)).getText().toString());
 
-                                Triangle t = new Triangle(alpha, beta);
-                                double gammaResult = t.getGamma();
-                                if(gammaResult > 0) {
-                                    ((TextView)findViewById(R.id.gammaResult)).setText(Double.toString(gammaResult));
-                                } else ((TextView)findViewById(R.id.gammaResult)).setText("Invalid angles!");
+                                EditText alfaEditText = findViewById(R.id.alfaEditText);
+                                EditText betaEditText = findViewById(R.id.betaEditText);
+                                if(TextUtils.isEmpty(alfaEditText.getText().toString()) ||
+                                    TextUtils.isEmpty(betaEditText.getText().toString())) {
+                                    ((TextView)findViewById(R.id.gammaResult)).setText("Invalid angles!");
+                                } else {
+
+
+                                    // get two of three triangle angles
+                                    double alpha = Double.parseDouble(alfaEditText.getText().toString());
+                                    double beta = Double.parseDouble(betaEditText.getText().toString());
+
+                                    if(alpha >= 180 || beta >= 180 || alpha + beta > 180) invalidAngles();
+                                    else {
+                                        Triangle t = new Triangle(alpha, beta);
+                                        double gammaResult = t.getGamma();
+                                        if (gammaResult > 0) {
+                                            ((TextView) findViewById(R.id.gammaResult)).setText(Double.toString(gammaResult));
+                                        } else
+                                            invalidAngles();
+                                    }
+                                }
                             }
                         }
 
@@ -117,15 +147,22 @@ public class CalculateTriangleActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String areaString = ((TextView)findViewById(R.id.triangleResultTextView)).getText().toString();
+                        if(hasCalculated) {
+                            String areaString = ((TextView)findViewById(R.id.triangleResultTextView)).getText().toString();
 
-                        Intent backIntent = new Intent();
+                            Intent backIntent = new Intent();
 
-                        backIntent.putExtra(TRIANGLE_RESULT, areaString);
+                            backIntent.putExtra(TRIANGLE_RESULT, areaString);
 
-                        setResult(RESULT_OK, backIntent);
+                            setResult(RESULT_OK, backIntent);
 
-                        finish();
+                            finish();
+                        } else {
+
+                            triangleResultTextView.setText("Calculate your area first!");
+                        }
+
+
                     }
                 }
         );
@@ -148,5 +185,9 @@ public class CalculateTriangleActivity extends AppCompatActivity {
         );
 
     }
+
+    private void invalidAngles() {
+            ((TextView) findViewById(R.id.gammaResult)).setText("Invalid angles!");
+        }
 
 }
