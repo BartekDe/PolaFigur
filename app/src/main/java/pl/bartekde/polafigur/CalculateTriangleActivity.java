@@ -1,10 +1,12 @@
 package pl.bartekde.polafigur;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -72,6 +74,7 @@ public class CalculateTriangleActivity extends AppCompatActivity {
 
         triangleCalcButton = findViewById(R.id.triangleCalcButton);
         triangleResultTextView = findViewById(R.id.triangleResultTextView);
+        final Activity thisActivity = this;
 
         View.OnClickListener listener1 = new View.OnClickListener() {
             @Override
@@ -97,6 +100,7 @@ public class CalculateTriangleActivity extends AppCompatActivity {
                     double triangleArea = t.area(); // calculate beforehand to avoid double calculation if the triangle is valid
                     if (triangleArea != 0.0) {
                         triangleResultTextView.setText(Double.toString(triangleArea));
+                        hideSoftKeyboard(thisActivity);
                     } else triangleResultTextView.setText("Invalid triangle!");
                     hasCalculated = true;
                 }
@@ -107,7 +111,6 @@ public class CalculateTriangleActivity extends AppCompatActivity {
         // add listener to the button that calculates the area of a triangle
         triangleCalcButton.setOnClickListener(listener1);
 
-        // add second way to calculate the area - with angles of the triangle
         findViewById(R.id.triangleAnglesCalcButton)
                 .setOnClickListener(
                         new View.OnClickListener() {
@@ -132,6 +135,7 @@ public class CalculateTriangleActivity extends AppCompatActivity {
                                         double gammaResult = t.getGamma();
                                         if (gammaResult > 0) {
                                             ((TextView) findViewById(R.id.gammaResult)).setText(Double.toString(gammaResult));
+                                            hideSoftKeyboard(thisActivity);
                                         } else
                                             invalidAngles();
                                     }
@@ -188,6 +192,14 @@ public class CalculateTriangleActivity extends AppCompatActivity {
 
     private void invalidAngles() {
             ((TextView) findViewById(R.id.gammaResult)).setText("Invalid angles!");
-        }
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+    }
 
 }

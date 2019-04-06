@@ -1,10 +1,12 @@
 package pl.bartekde.polafigur;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -45,6 +47,8 @@ public class CalculateCircleActivity extends AppCompatActivity {
         circleCalcButton = findViewById(R.id.circleCalcButton);
         circleResultTextView = findViewById(R.id.circleResultTextView);
 
+        final Activity thisActivity = this;
+
         View.OnClickListener listener1 = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +65,7 @@ public class CalculateCircleActivity extends AppCompatActivity {
                     double circleArea = circle.area(); // calculate beforehand to avoid double calculation if the triangle is valid
                     if (circleArea != 0.0) {
                         circleResultTextView.setText(Double.toString(circleArea));
+                        hideSoftKeyboard(thisActivity);
                     } else circleResultTextView.setText("Invalid circle");
                     hasCalculated = true;
                 }
@@ -108,5 +113,13 @@ public class CalculateCircleActivity extends AppCompatActivity {
                 }
         );
 
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
     }
 }

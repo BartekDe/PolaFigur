@@ -1,10 +1,12 @@
 package pl.bartekde.polafigur;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -48,6 +50,8 @@ public class CalculateRectangleActivity extends AppCompatActivity {
         Button rectangleCalcButton = findViewById(R.id.rectangleCalcButton);
         final TextView rectangleResultTextView = findViewById(R.id.rectangleResultTextView);
 
+        final Activity thisActivity = this;
+
         View.OnClickListener listener1 = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +72,7 @@ public class CalculateRectangleActivity extends AppCompatActivity {
                     double rectangleArea = r.area(); // calculate beforehand to avoid double calculation if the rectangle is valid
                     if (rectangleArea != 0.0) {
                         rectangleResultTextView.setText(Double.toString(rectangleArea));
+                        hideSoftKeyboard(thisActivity);
                     } else rectangleResultTextView.setText("Invalid rectangle");
 
                     hasCalculated = true;
@@ -115,5 +120,13 @@ public class CalculateRectangleActivity extends AppCompatActivity {
                 }
         );
 
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
     }
 }
